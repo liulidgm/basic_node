@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
+</head>
+<body>
+<form>
+    <div class="form-group">
+        <input class="form-control" name="username" id="username" placeholder="用户名asdsa">
+    </div>
+    <div class="form-group">
+        <input class="form-control" name="pass" id="pass" placeholder="密码">
+    </div>
+    <button type="button" id="sub_btn" class="btn btn-default">登录</button>
+</form>
+
+<script src="/bower_components/jquery/dist/jquery.min.js"/>
+<script src="/bower_components/bootstrap/dist/js/bootstrap.js"/>
+<script>
+    console.log("ss");
+    $(function () {
+        alert("ee");
+        $("#sub_btn").click(function () {
+            alert("submmit");
+            var username = $("#username").val();
+            var pass = $("#pass").val();
+            $.ajax({
+                type:"POST",
+                url:"/login",
+                data:{username:username,pass:pass},
+                success:function(data){
+                    if(data.flag){
+                        window.location.href = "index.html"
+                    }
+                },
+                err: function () {
+
+                }
+            })
+        });
+    })
+
+
+</script>
+</body>
+</html>
