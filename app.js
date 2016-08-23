@@ -9,6 +9,8 @@ app.set('views', path.join(__dirname, 'static'));
 app.engine('.html', ejs.__express);
 app.set('view engine', 'html');
 app.use(express.static(__dirname));
+
+console.log(__dirname);
 app.set('port', 3000);
 
 app.use(bodyParser.json());
@@ -21,6 +23,8 @@ app.use(function(req, res, next) {
     //res.end('123456');
     next();
 });
+
 app.use('/login', require('./routers/login'));
+app.use('/index', require('./routers/index'));
 
 module.exports = app;
